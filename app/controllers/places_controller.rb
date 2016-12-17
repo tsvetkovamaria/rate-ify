@@ -27,6 +27,7 @@ class PlacesController < ApplicationController
     @picture = Picture.new
     @review = Review.new
     @pictures = @place.pictures 
+    @reviews = @place.reviews
   end
 
   def edit

@@ -14,7 +14,7 @@ AdminUser.create!(email: 'admin@example.com', password: 'password', password_con
 User.create!(name: 'maria', email: 'admin@example.com', password: '123456', password_confirmation: '123456' )
 5.times do
   User.create!(
-    name: FFaker::NameRU.name, 
+    name: FFaker::Name.name, 
     email: FFaker::Internet.email, 
     password: '123456', 
     password_confirmation: '123456'
@@ -42,5 +42,16 @@ for i in 0...images.size
     :image => File.new("#{Rails.root}/app/assets/images/fixtures/pictures/#{img}.jpg"),
     user: users[rand(0...users.size)],
     place: places[rand(0...places.size)]
+    })
+end
+
+100.times do
+  Review.create!({
+    body: FFaker::HipsterIpsum.phrase,
+    user: users[rand(0...users.size)],
+    place: places[rand(0...places.size)],
+    grade_food: rand(0..5),
+    grade_service: rand(0..5),
+    grade_interior: rand(0..5)
     })
 end

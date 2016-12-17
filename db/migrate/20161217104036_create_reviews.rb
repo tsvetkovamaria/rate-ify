@@ -4,9 +4,9 @@ class CreateReviews < ActiveRecord::Migration[5.0]
       t.references :user, foreign_key: true
       t.references :place, foreign_key: true
       t.text :body
-      t.integer :grade_food
-      t.integer :grade_service
-      t.integer :grade_interior
+      t.decimal :grade_food
+      t.decimal :grade_service
+      t.decimal :grade_interior
 
       t.timestamps
     end

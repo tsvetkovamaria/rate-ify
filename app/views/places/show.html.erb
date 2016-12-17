@@ -18,11 +18,26 @@
     <%= link_to "Edit", edit_place_path(@place), class: "btn btn-default" %>
   </div>
   <% end %>
+  
+  <div>
+    <% unless @reviews.empty? %>
+      <h2>Reviews</h2>
+      <% @reviews.each do |review|  %>
+        <b>On <%= review.created_at.strftime("%d/%m/%Y")  %>, <%= review.user.name %> said: </b>
+        <p><%= review.body %></p>
+        <p>Food: <%= review.grade_food %></p>
+        <p>Service: <%= review.grade_service %></p>
+        <p>Interior: <%= review.grade_interior %></p>
+      <% end %>
+    <% end %>
+  </div>
+
   <hr>
   <% if user_signed_in? %>
   <div>
     <%= render 'review_form', p: @place %>
   </div>
+  <hr>
   <div>
     <%= render 'picture_form', p: @place %>
   </div>
