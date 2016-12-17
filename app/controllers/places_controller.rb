@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy] 
 
   def index
-    @places = Place.all
+    @places = Place.page(params[:page]).per(15)
   end
 
   def new
@@ -27,7 +27,7 @@ class PlacesController < ApplicationController
     @picture = Picture.new
     @review = Review.new
     @pictures = @place.pictures 
-    @reviews = @place.reviews
+    @reviews = @place.reviews.reverse
   end
 
   def edit

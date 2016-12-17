@@ -1,13 +1,19 @@
 <div class="container">
-  <h1><%= @place.title %></h1>
-  <div>
-    <%= image_tag(@place.image.url(:medium)) %>
+  <div class="row">
+    <div class="col-md-6">
+      <h1><%= @place.title %></h1>
+
+      <b>Category: <%= @place.category.name %></b>
+      <p><%= @place.description %></p>
+    </div>
+    <div class="col-md-6 text-right">
+      <%= image_tag(@place.image.url(:medium), :class => "img-responsive") %>
+    </div>
   </div>
-  <span><%= @place.category.name %></span>
-  <p><%= @place.description %></p>
   <section>
+
+    <% unless @pictures.empty? %>
     <h2>Gallery</h2>
-    <% if @pictures %>
     <% @pictures.each do |pic| %>
     <%= image_tag(pic.image.url(:thumb)) %> 
     <% end %>
@@ -21,14 +27,23 @@
   
   <div>
     <% unless @reviews.empty? %>
-      <h2>Reviews</h2>
-      <% @reviews.each do |review|  %>
-        <b>On <%= review.created_at.strftime("%d/%m/%Y")  %>, <%= review.user.name %> said: </b>
-        <p><%= review.body %></p>
-        <p>Food: <%= review.grade_food %></p>
-        <p>Service: <%= review.grade_service %></p>
-        <p>Interior: <%= review.grade_interior %></p>
-      <% end %>
+    <h2>Ratings</h2>
+
+    <p>Overall: <%= @place.rating %></p>
+    <p>Quality of food: <%= @place.food_rating %></p>
+    <p>Service: <%= @place.service_rating %></p>
+    <p>Interior: <%= @place.interior_rating %></p>
+    <hr>
+
+
+    <h2>Reviews</h2>
+    <% @reviews.each do |review|  %>
+    <b>On <%= review.created_at.strftime("%d/%m/%Y")  %>, <%= review.user.name %> said: </b>
+    <p><%= review.body %></p>
+    <p>Food: <%= review.grade_food %></p>
+    <p>Service: <%= review.grade_service %></p>
+    <p>Interior: <%= review.grade_interior %></p>
+    <% end %>
     <% end %>
   </div>
 

@@ -82,9 +82,9 @@ ActiveRecord::Schema.define(version: 20161217104036) do
     t.integer  "user_id"
     t.integer  "place_id"
     t.text     "body"
-    t.decimal  "grade_food"
-    t.decimal  "grade_service"
-    t.decimal  "grade_interior"
+    t.float    "grade_food"
+    t.float    "grade_service"
+    t.float    "grade_interior"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["place_id"], name: "index_reviews_on_place_id"
