@@ -7,4 +7,7 @@ class Place < ApplicationRecord
                     default_url: '/images/:style/missing.png'
   validates_attachment_content_type :image,
                         content_type: ['image/jpeg', 'image/gif', 'image/png']
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :agreement, presence: true
 end

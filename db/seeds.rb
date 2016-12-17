@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 categories = Category.create!([{name: "Bar"}, {name: "Night Club"}, {name: "Restaurant"}])
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
