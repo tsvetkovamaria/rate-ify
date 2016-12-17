@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
+  get 'pictures/new'
+
+  get 'pictures/create'
+
+  root "places#index"
+
+  match "places/:id/" => "places#save_picture", :via => :post, :as => :picture
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users
+
   ActiveAdmin.routes(self)
-  root "places#index"
-  
+ 
   resources :places
 
-  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

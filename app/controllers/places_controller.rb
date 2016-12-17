@@ -24,6 +24,8 @@ class PlacesController < ApplicationController
 
   def show
     @place = Place.find(params[:id])
+    @picture = Picture.new
+    @pictures = @place.pictures
   end
 
   def edit
@@ -46,10 +48,21 @@ class PlacesController < ApplicationController
     redirect_to root_path
   end
 
+  def save_picture
+    @picture = Picture.new(picture_params)
+    @picture.save
+    flash[:success] = "You added a new picture"
+    redirect_to :back
+  end
+
   private
 
   def place_params
     params.require(:place).permit(:title, :description, :image, :agreement, :category_id, :user_id)
+  end
+
+  def picture_params
+    params.require(:picture).permit(:title, :image, :user_id, :place_id)
   end
 
   def correct_user

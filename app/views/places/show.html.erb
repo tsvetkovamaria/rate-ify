@@ -3,11 +3,25 @@
   <div>
     <%= image_tag(@place.image.url(:medium)) %>
   </div>
-  <p><%= @place.description %></p>
   <span><%= @place.category.name %></span>
+  <p><%= @place.description %></p>
+  <section>
+    <h2>Gallery</h2>
+    <% if @pictures %>
+    <% @pictures.each do |pic| %>
+    <%= image_tag(pic.image.url(:thumb)) %> 
+    <% end %>
+    <% end %>
+  </section>
   <% if user_signed_in? && @place.user == current_user %>
   <div>
     <%= link_to "Edit", edit_place_path(@place), class: "btn btn-default" %>
+  </div>
+  <% end %>
+  <hr>
+  <% if user_signed_in? %>
+  <div>
+    <%= render 'picture_form', p: @place %>
   </div>
   <% end %>
 </div>
