@@ -1,0 +1,8 @@
+<div class="container">
+  <h1><%= @place.title %></h1>
+  <div>
+    <%= image_tag(@place.image.url(:medium)) %>
+  </div>
+  <p><%= @place.description %></p>
+  <span><%= @place.category.name %></span>
+</div>
