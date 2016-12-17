@@ -2,6 +2,7 @@ class Place < ApplicationRecord
   belongs_to :category
   belongs_to :user
   has_many :pictures
+  has_many :reviews
 
   has_attached_file :image,
                     styles: {medium: '400x200>', thumb: '100x50' },
@@ -11,7 +12,7 @@ class Place < ApplicationRecord
                         
   validates :title, presence: true
   validates :description, presence: true
-  validates :agreement, presence: true
+  validates :terms_of_service, acceptance: true
   validates :category, presence: true
   validates :user, presence: true
 end

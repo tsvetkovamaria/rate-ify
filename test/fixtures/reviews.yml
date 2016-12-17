@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  place: one
+  body: MyText
+  grade_food: 1
+  grade_service: 1
+  grade_interior: 1
+
+two:
+  user: two
+  place: two
+  body: MyText
+  grade_food: 1
+  grade_service: 1
+  grade_interior: 1

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161217095852) do
+ActiveRecord::Schema.define(version: 20161217104036) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -74,9 +74,21 @@ ActiveRecord::Schema.define(version: 20161217095852) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.boolean  "agreement"
     t.index ["category_id"], name: "index_places_on_category_id"
     t.index ["user_id"], name: "index_places_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "place_id"
+    t.text     "body"
+    t.integer  "grade_food"
+    t.integer  "grade_service"
+    t.integer  "grade_interior"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["place_id"], name: "index_reviews_on_place_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

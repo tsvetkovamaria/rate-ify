@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :places
   has_many :pictures
+  has_many :reviews
 
   validates :name, presence: true
 end

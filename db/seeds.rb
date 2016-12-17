@@ -25,11 +25,22 @@ users = User.all
 categories = Category.create!([{name: "Bar"}, {name: "Night Club"}, {name: "Restaurant"}, {name: 'Tavern'}])
 for i in 0...21
   Place.create!({
-    :image => File.new("#{Rails.root}/app/assets/images/fixtures/#{i}.jpg"),
+    :image => File.new("#{Rails.root}/app/assets/images/fixtures/places/#{i}.jpg"),
     title: FFaker::Product.brand,
     description: FFaker::Lorem.phrase,
     user: users[rand(0...users.size)],
     category: categories[rand(0...categories.size)],
-    agreement: true
   })
+end
+places = Place.all
+
+images = ['deer', 'fall', 'girl', 'ghost', 'house', 'kitten', 'lake', 'pool', 'sport', 'sunset', 'duck']
+
+for i in 0...images.size
+  img = images[i]
+  Picture.create!({
+    :image => File.new("#{Rails.root}/app/assets/images/fixtures/pictures/#{img}.jpg"),
+    user: users[rand(0...users.size)],
+    place: places[rand(0...places.size)]
+    })
 end
