@@ -1,0 +1,34 @@
+<% if @review.errors.any? %>
+  <div class="errors">
+    Total errors: <%= @review.errors.count %>
+    <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for(@review, remote: true) do |f| %>
+<%=  f.hidden_field :user_id, :value => current_user.id %>
+<%=  f.hidden_field :place_id, :value => p.id %>
+
+<div class="form-group">
+  <%= f.label :body %><br />
+  <%= f.text_area :body, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :grade_food %><br />
+  <%= f.number_field :grade_food, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :grade_service %><br />
+  <%= f.number_field :grade_service, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :grade_interior %><br />
+  <%= f.number_field :grade_interior, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.submit 'Submit', :class => "btn btn-success" %>
+</div>
+<% end %>

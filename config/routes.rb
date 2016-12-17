@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   root "places#index"
 
   match "places/:id/" => "places#save_picture", :via => :post, :as => :picture
+  # match "places/:id/" => "places#save_review", :via => :post, :as => :review
+
+  post 'reviews/:id' => "places#save_review", :via => :post, :as => :reviews
+
+  # post 'pictures/:id' => "places#save_picture", :via => :post, :as => :pictures
+
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users

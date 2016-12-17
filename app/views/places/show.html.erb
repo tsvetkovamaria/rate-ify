@@ -21,6 +21,9 @@
   <hr>
   <% if user_signed_in? %>
   <div>
+    <%= render 'review_form', p: @place %>
+  </div>
+  <div>
     <%= render 'picture_form', p: @place %>
   </div>
   <% end %>
