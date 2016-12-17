@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  get 'pictures/new'
-
-  get 'pictures/create'
 
   root "places#index"
 
   match "places/:id/" => "places#save_picture", :via => :post, :as => :picture
 
   post 'reviews/:id' => "places#save_review", :via => :post, :as => :reviews
+
+  # get "places/category/:id" => "places#show_by_category", :as => :categorized_places
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
