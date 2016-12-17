@@ -6,5 +6,30 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-categories = Category.create!([{name: "Bar"}, {name: "Night Club"}, {name: "Restaurant"}])
+require 'ffaker'
+
+# Users section
+
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+User.create!(name: 'maria', email: 'admin@example.com', password: '123456', password_confirmation: '123456' )
+5.times do
+  User.create!(
+    name: FFaker::NameRU.name, 
+    email: FFaker::Internet.email, 
+    password: '123456', 
+    password_confirmation: '123456'
+  )
+end
+users = User.all
+# Places
+categories = Category.create!([{name: "Bar"}, {name: "Night Club"}, {name: "Restaurant"}, {name: 'Tavern'}])
+for i in 0...21
+  Place.create!({
+    :image => File.new("#{Rails.root}/app/assets/images/fixtures/#{i}.jpg"),
+    title: FFaker::Product.brand,
+    description: FFaker::Lorem.phrase,
+    user: users[rand(0...users.size)],
+    category: categories[rand(0...categories.size)],
+    agreement: true
+  })
+end

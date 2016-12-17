@@ -10,4 +10,6 @@ class Place < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :agreement, presence: true
+  validates :category, presence: true
+  validates :user, presence: true
 end

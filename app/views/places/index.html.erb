@@ -1,7 +1,15 @@
 <div class="container">
   <h1>All places</h1>
   <div class="row">
-    
+    <% @places.each do |place|  %>
+    <div class="col-md-4">
+      <div class="panel">
+        <%= image_tag(place.image.url(:medium)) %>
+        <h3>  <%= link_to place.title, place_path(place) %></h3>
+        <%=  %>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
 

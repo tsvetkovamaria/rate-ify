@@ -5,4 +5,9 @@
   </div>
   <p><%= @place.description %></p>
   <span><%= @place.category.name %></span>
+  <% if user_signed_in? && @place.user == current_user %>
+  <div>
+    <%= link_to "Edit", edit_place_path(@place), class: "btn btn-default" %>
+  </div>
+  <% end %>
 </div>
